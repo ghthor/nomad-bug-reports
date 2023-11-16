@@ -1,4 +1,4 @@
-module report
+module bugreport
 
 go 1.21.3
 
