@@ -15,7 +15,7 @@ func must(err error) {
 }
 
 func main() {
-	f, err := os.Open("nomad.hcl")
+	f, err := os.Open(os.Args[1])
 	must(err)
 	defer f.Close()
 	_, err = jobspec2.Parse("", f)

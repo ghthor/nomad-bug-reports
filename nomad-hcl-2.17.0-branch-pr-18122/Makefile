@@ -3,12 +3,17 @@
 bug:
 	rm -f go.mod
 	$(MAKE) go.mod 2>/dev/null 1>/dev/null
-	go run main.go
+	go run main.go nomad.hcl
 
 nobug:
 	sed -i '/replace/d' go.mod
 	go mod tidy 2>/dev/null 1>/dev/null
-	go run main.go
+	go run main.go nomad.hcl
+
+nobug_aswell:
+	rm -f go.mod
+	$(MAKE) go.mod 2>/dev/null 1>/dev/null
+	go run main.go ./nomad_nobug.hcl
 
 go.mod:
 	go mod init bugreport
